@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      iframe { 
+        width: 100%;
+        height: 3em;
+        border: none;
+        background: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>UTF-8 javascript test</h1>
+    <p>
+      Inline: Here be unicode: 我的气垫船装得满是鳗鱼
+    </p>
+    <p>
+      Static javascript: <script src='./static.js'></script>
+    </p>
+    <p>
+      Static javascript with BOM: <script src='./static-bom.js'></script>
+    </p>
+    <p>
+      Content-type: application/javascript: <script src='./app-js.cgi'></script>
+    </p>
+    <p>
+      Content-type: text/javascript: <script src='./text-js.cgi'></script>
+    </p>
+    <p>
+      Content-type: application/javascript: <script src='./app-js-c.cgi'></script>
+    </p>
+    <p>
+      Content-type: text/javascript: <script src='./text-js-c.cgi'></script>
+    </p>
+    <iframe src='./nobom.html'></iframe>
+    <iframe src='./bom.html'></iframe>
+  </body>
+</html>
+
