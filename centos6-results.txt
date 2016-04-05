@@ -1,0 +1,39 @@
+# On CentOS 6 machine
+
+$ . test-python.sh
+Trying Current NCBI setting
+  LC_ALL=POSIX
+  LANG=
+  python2
+    script has utf-8: 1
+    script can read utf-8: 0
+  python2
+    script has utf-8: 1
+    script can read utf-8: 1
+Trying Unset both
+  LC_ALL=
+  LANG=
+  python2
+    script has utf-8: 1
+    script can read utf-8: 0
+  python2
+    script has utf-8: 1
+    script can read utf-8: 1
+Trying Set LC_ALL
+  LC_ALL=en_US.UTF-8
+  LANG=
+  python2
+    script has utf-8: 1
+    script can read utf-8: 0
+  python2
+    script has utf-8: 0
+    script can read utf-8: 0
+Trying Set LANG
+  LC_ALL=
+  LANG=en_US.UTF-8
+  python2
+    script has utf-8: 1
+    script can read utf-8: 0
+  python2
+    script has utf-8: 0
+    script can read utf-8: 0
