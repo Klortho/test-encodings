@@ -2,39 +2,93 @@
 <html>
   <head>
     <style>
+      blockquote {
+        margin-left: 2em;
+        border: 1px solid #222;
+        background: #ddd;
+	padding: 0.5em;
+      }
       iframe { 
         width: 100%;
         height: 3em;
         border: none;
-        background: #ddd;
       }
     </style>
   </head>
   <body>
-    <h1>UTF-8 javascript test</h1>
+    <h1>UTF-8 tests</h1>
     <p>
-      Inline: Here be unicode: 我的气垫船装得满是鳗鱼
+      Test whether or not utf-8 files get from the server to the client correctly
+      or not. All files in this test are in UTF-8 on the disk.
     </p>
+
+
+    <h2>Static assets</h2>
     <p>
-      Static javascript: <script src='./static.js'></script>
+      Encoding could get messed up either when Apache reads the file from the
+      disk, or when the client interprets the HTTP response.
     </p>
+
+    <p>Static HTML file with no BOM: iframe ./nobom.html</p>
+    <blockquote>
+      <iframe src='./nobom.html'></iframe>
+    </blockquote>
+
+    <p>Static HTML file with BOM: iframe ./bom.html</p>
+    <blockquote>
+      <iframe src='./bom.html'></iframe>
+    </blockquote>
+
+    <p>Static javascript file with no BOM: iframe ./static.js</p>
+    <blockquote>
+      <iframe src='./static.js'></iframe>
+    </blockquote>
+
+    <p>Static javascript file with BOM: iframe ./static-bom.js</p>
+    <blockquote>
+      <iframe src='./static-bom.js'></iframe>
+    </blockquote>
+
+    <p>Next some quick, additional checks of the same JavaScript files, included
+      in &lt;script> tags, and executed:</p>
+
+    <p>Static javascript file with no BOM: script ./static.js</p>
+    <blockquote>
+      <script src='./static.js'></script>
+    </blockquote>
+
+    <p>Static javascript file with BOM: script ./static-bom.js</p>
+    <blockquote>
+      <script src='./static-bom.js'></script>
+    </blockquote>
+
+    <h2>CGIs</h2>
     <p>
-      Static javascript with BOM: <script src='./static-bom.js'></script>
+      Encoding problems in CGIs can happen, additionally, when the script
+      reads data files that it uses, or has some other internal encoding
+      problems. The following scripts output four different combinations of
+      <code>Content-type</code> header values.
     </p>
-    <p>
-      Content-type: application/javascript: <script src='./app-js.cgi'></script>
-    </p>
-    <p>
-      Content-type: text/javascript: <script src='./text-js.cgi'></script>
-    </p>
-    <p>
-      Content-type: application/javascript: <script src='./app-js-c.cgi'></script>
-    </p>
-    <p>
-      Content-type: text/javascript: <script src='./text-js-c.cgi'></script>
-    </p>
-    <iframe src='./nobom.html'></iframe>
-    <iframe src='./bom.html'></iframe>
+
+    <p>Outputs <code>Content-type: application/javascript</code>: script ./app-js.cgi</p>
+    <blockquote>
+      <script src='./app-js.cgi'></script>
+    </blockquote>
+
+    <p>Outputs <code>Content-type: text/javascript</code>: script ./text-js.cgi</p>
+    <blockquote>
+      <script src='./text-js.cgi'></script>
+    </blockquote>
+
+    <p>Outputs <code>Content-type: application/javascript</code>: script ./app-js-charset.cgi</p>
+    <blockquote>
+      <script src='./app-js-charset.cgi'></script>
+    </blockquote>
+
+    <p>Outputs <code>Content-type: text/javascript</code>: script ./text-js-charset.cgi</p>
+    <blockquote>
+      <script src='./text-js-charset.cgi'></script>
+    </blockquote>
   </body>
 </html>
 

@@ -93,3 +93,20 @@ I tested these axes, with the script [test-python.sh](test-python.sh):
     * [CentOS 6](centos6-results.txt)
     * [CentOS 7](centos7-results.txt)
 
+
+## Apache settings
+
+```
+<Directory /<DOCROOT>/test-encodings>
+  Options FollowSymLinks ExecCGI
+  AddHandler cgi-script .cgi
+</Directory>
+<Directory /<DOCROOT>/test-encodings/charset>
+  AddCharset UTF-8 .html
+</Directory>
+<Directory /<DOCROOT>/test-encodings/lang>
+  SetEnv LANG en_US.UTF-8
+</Directory>
+```
+
+
